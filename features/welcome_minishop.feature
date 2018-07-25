@@ -6,5 +6,5 @@ Feature: Welcome user to Minishop
 
    Scenario: Sign up to minishop
    Given User is on welcome page
-    When User clicks the "Sign up" Button
+    When User clicks the "Sign Up" Button
     Then User should see "Minishop Registration"
