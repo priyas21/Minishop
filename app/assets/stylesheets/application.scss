@@ -15,3 +15,12 @@
 
 //  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+ .container-fluid {
+   background-color: #337ab7;
+   color: white;
+ }
+ .navbar-brand {
+  color: white;
+  width: 100%;
+ }
