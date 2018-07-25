@@ -16,11 +16,20 @@
 //  @import "bootstrap-sprockets";
  @import "bootstrap";
 
- .container-fluid {
-   background-color: #337ab7;
-   color: white;
+ .navbar-default , .btn{
+   background-color: #6db152;
  }
- .navbar-brand {
+ .btn:hover{
+  background-color: green;
+ }
+
+ a:hover {
+  color:black;
+ }
+ .navbar-brand, .nav {
   color: white;
-  width: 100%;
+  font-size: 1.7em;
+ }
+ .nav-link{
+   color: white;
  }
