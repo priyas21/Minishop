@@ -4,7 +4,7 @@ Feature: Welcome user to Minishop
    be greeted by welcome message
    User would be able to sign up
 
-   Scenario: Sign up to minishop
-   Given User is on welcome page
-    When User clicks the "Sign Up" Button
-    Then User should see "Minishop Registration"
+Scenario: Sign up to minishop
+Given User is on welcome page
+ When User clicks the "Sign Up" Button
+ Then User should see "Minishop Registration"
