@@ -48,3 +48,19 @@
  .center {
    text-align: center;
  }
+
+ #logo {
+   float: left;
+   color: #ffffff;
+   text-transform: uppercase;
+   font-weight: bold;
+   font-size: 1.7em;
+   padding-top: 9px;
+   letter-spacing: -1px;
+ }
+
+ #logo:hover {
+   color: #000000;
+   text-decoration: none;
+ }
+
