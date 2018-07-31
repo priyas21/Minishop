@@ -1,3 +1,36 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+ @import "bootstrap";
+
+ #users {
+   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+   border-collapse: collapse;
+   width: 100%;
+ }
+
+ #users tr:nth-child(even) {
+   background-color: #f2f2f2;
+ }
+
+ #users tr:hover {
+   background-color: #ddd;
+ }
+
+ #users th {
+   padding-top: 12px;
+   padding-bottom: 12px;
+   text-align: left;
+   background-color: #9fdb87;
+   color: white;
+   font-size: 20px;
+   text-transform: uppercase;
+   padding-left: 5px;
+ }
+
+ #users td {
+   text-align: left;
+   text-transform: initial;
+   font-family: Georgia, 'Times New Roman', Times, serif;
+   font-size: 17px;
+ }
