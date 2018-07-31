@@ -6,6 +6,14 @@ RSpec.describe User, type: :model do
   let(:last_name) { "Sodhi" }
   let(:phone) { "0226258409" }
   let(:email) { "p@example.com" }
+
+  context "with valid attributes" do
+
+      it "is valid" do
+      expect(user).to be_valid
+    end
+  end
+
   context "without first name" do
     let(:first_name) { nil }
 
