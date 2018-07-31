@@ -63,6 +63,28 @@ RSpec.describe User, type: :model do
     end
   end
 
+  context "with invalid phone number" do
+    invalid_phone_numbers = %w[shds23567 @9676000]
+
+    it "is not valid" do
+      invalid_phone_numbers.each do |invalid_phone_number|
+        user.phone = invalid_phone_number
+        expect(user).to_not be_valid
+      end
+    end
+  end
+
+   context "with valid phone number" do
+    valid_phone_numbers = %w[+645678909 0226258409 ]
+
+    it "is valid" do
+      valid_phone_numbers.each do |valid_phone_number|
+        user.phone = valid_phone_number
+        expect(user).to be_valid
+      end
+    end
+  end
+
   context "with email too long" do
     let(:email) { "a" * 244 + "@example.com" }
 
