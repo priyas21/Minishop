@@ -29,6 +29,31 @@ RSpec.describe User, type: :model do
       expect(user).to_not be_valid
     end
   end
+
+  context "with first name too long" do
+    let(:first_name) { "p" * 51 }
+
+    it "is not valid" do
+      expect(user).to_not be_valid
+    end
+  end
+
+   context "with last name too long" do
+    let(:last_name) { "s" * 51 }
+
+    it "is not valid" do
+      expect(user).to_not be_valid
+    end
+  end
+
+  context "with email too long" do
+    let(:email) { "a" * 244 + "@example.com" }
+
+    it "is not valid" do
+      expect(user).to_not be_valid
+    end
+  end
+
   context "with invalid email address" do
     invalid_addresses = %w[user@example,com user_at_foo.org user.name@example.
                            foo@bar_baz.com foo@bar+baz...com]
