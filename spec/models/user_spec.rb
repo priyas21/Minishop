@@ -53,4 +53,12 @@ RSpec.describe User, type: :model do
     end
   end
 
+  context "with duplicate email address" do
+    let!(:duplicate_user) { User.create!(:first_name => first_name,:last_name => last_name, :email => email ) }
+
+
+    it "is not valid" do
+      expect(user).to_not be_valid
+    end
+  end
 end
