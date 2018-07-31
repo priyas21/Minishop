@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject(:user) { User.new(:first_name => first_name, :last_name => last_name, :email => email) }
+  subject(:user) { User.new(:first_name => first_name, :last_name => last_name, :phone => phone, :email => email) }
   let(:first_name) { "Priya" }
   let(:last_name) { "Sodhi" }
+  let(:phone) { "0226258409" }
   let(:email) { "p@example.com" }
   context "without first name" do
     let(:first_name) { nil }
@@ -15,6 +16,14 @@ RSpec.describe User, type: :model do
 
    context "without last name" do
     let(:last_name) { nil }
+
+      it "is not valid" do
+      expect(user).to_not be_valid
+    end
+  end
+
+   context "without contact phone" do
+    let(:phone) { nil }
 
       it "is not valid" do
       expect(user).to_not be_valid
@@ -79,7 +88,7 @@ RSpec.describe User, type: :model do
   end
 
   context "with duplicate email address" do
-    let!(:duplicate_user) { User.create!(:first_name => first_name,:last_name => last_name, :email => email ) }
+    let!(:duplicate_user) { User.create!(:first_name => first_name,:last_name => last_name, :phone => phone, :email => email ) }
 
 
     it "is not valid" do
