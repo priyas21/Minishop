@@ -12,4 +12,13 @@ RSpec.describe User, type: :model do
       expect(user).to_not be_valid
     end
   end
+
+   context "without last name" do
+    let(:last_name) { nil }
+
+      it "is not valid" do
+      expect(user).to_not be_valid
+    end
+  end
+
 end
