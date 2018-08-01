@@ -85,6 +85,14 @@ RSpec.describe User, type: :model do
     end
   end
 
+  context "with phone number too long" do
+    let(:phone) { "1" * 16 }
+
+    it "is not valid" do
+      expect(user).to_not be_valid
+    end
+  end
+
   context "with email too long" do
     let(:email) { "a" * 244 + "@example.com" }
 
