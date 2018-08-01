@@ -26,8 +26,8 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "#create" do
-      let(:user_params) { { :user => {:first_name => first_name, :last_name => last_name, :phone => phone, :email => email } } }
-      let(:create_user) { post :create, :params => user_params}
+    let(:user_params) { { :user => {:first_name => first_name, :last_name => last_name, :phone => phone, :email => email } } }
+    let(:create_user) { post :create, :params => user_params}
 
     context "valid attributes" do
 
@@ -39,6 +39,22 @@ RSpec.describe UsersController, type: :controller do
       end
       it "flashes a success message" do
       expect(create_user.request.flash[:success]).to_not be_nil
+      end
+    end
+
+    context "invalid attributes" do
+      let(:first_name) { nil }
+      let(:phone) { "abc7786876"}
+      let(:email) {'sg.com'}
+
+      it "will not create a user" do
+      expect{create_user}.to change{User.count}.by(0)
+      end
+      it "renders new template" do
+      expect(create_user).to render_template(:new)
+      end
+      it "flashes a fail message" do
+      expect(create_user.request.flash[:danger]).to_not be_nil
       end
     end
   end
