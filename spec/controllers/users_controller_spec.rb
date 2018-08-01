@@ -7,6 +7,14 @@ RSpec.describe UsersController, type: :controller do
   let(:last_name) { "Sodhi" }
   let(:phone) { "0226258409" }
   let(:email) { "p@gmail.com" }
+
+  describe "#index" do
+    before { get :index }
+      it "assigns @user" do
+        expect(assigns(:users)).to eq User.all
+      end
+    end
+
   describe "#new" do
     context "when initialized" do
       before { get :new }
