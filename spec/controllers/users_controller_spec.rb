@@ -3,10 +3,6 @@ require 'rails_helper'
 RSpec.describe UsersController, type: :controller do
 
   subject(:user) { User.create!(:first_name => first_name, :last_name => last_name, :phone => phone, :email => email) }
-  let(:first_name) { "Priya" }
-  let(:last_name) { "Sodhi" }
-  let(:phone) { "0226258409" }
-  let(:email) { "p@gmail.com" }
 
   describe "#index" do
     before { get :index }
@@ -28,6 +24,10 @@ RSpec.describe UsersController, type: :controller do
   describe "#create" do
     subject(:create_user) { post :create, :params => user_params }
     let(:user_params) { { :user => {:first_name => first_name, :last_name => last_name, :phone => phone, :email => email } } }
+    let(:first_name) { "Priya" }
+    let(:last_name) { "Sodhi" }
+    let(:phone) { "0226258409" }
+    let(:email) { "p@gmail.com" }
 
     context "valid attributes" do
 
