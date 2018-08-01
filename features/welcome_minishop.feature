@@ -4,5 +4,5 @@ Feature: Welcome user to Minishop
    be greeted by welcome message
 
 Scenario: Welcome page
-Given User is on welcome page
- Then User should see 'Welcome to Minishop'
+Given I am on welcome page
+ Then I should see 'Welcome to Minishop'
