@@ -4,7 +4,6 @@
  @import "bootstrap";
 
  #users {
-   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
    border-collapse: collapse;
    width: 100%;
  }
@@ -23,14 +22,14 @@
    text-align: left;
    background-color: #9fdb87;
    color: #ffff;
-   font-size: 20px;
+   font-size: 25px;
    text-transform: uppercase;
    padding-left: 5px;
+   font-family: 'Courier New', Courier, monospace;
  }
 
  #users td {
    text-align: left;
    text-transform: initial;
-   font-family: Georgia, 'Times New Roman', Times, serif;
    font-size: 17px;
  }
