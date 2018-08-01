@@ -1,5 +1,5 @@
 <% flash.each do |message_type, message| %>
-  <% if message_type.eql?("success")  %>
+  <% if message_type == "success"  %>
     <div class="alert alert-success">
       <%= message %>
     </div>
