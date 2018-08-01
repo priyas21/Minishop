@@ -16,6 +16,10 @@
 //  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+ $error-color: #ca2a2a;
+ $text-color: #ffffff;
+ $hover-color: #000000;
+
  body{
    font-family: Georgia, 'Times New Roman', Times, serif;
  }
@@ -37,16 +41,16 @@
  }
 
  a:hover {
-  color:black;
+  color:$hover-color;
  }
 
  .navbar-brand, .nav {
-  color: #FFFFFF;
+  color:$text-color;
   font-size: 1.7em;
  }
 
  .nav-link{
-   color: #FFFFFF;
+   color:$text-color;
  }
 
  .center {
@@ -55,22 +59,22 @@
 
  #logo {
    float: left;
-   color: #ffffff;
+   color:$text-color;
    text-transform: uppercase;
    font-weight: bold;
    font-size: 1.7em;
    padding-top: 9px;
    letter-spacing: -1px;
    &:hover {
-     color: #000000;
+     color:$hover-color;
      text-decoration: none;
    }
  }
 
  #error_explanation {
-   color: #ca2a2a;
+   color: $error-color;
    ul {
-     color: #ca2a2a;
+     color: $error-color;
      margin: 0 0 30px 0;
    }
  }
