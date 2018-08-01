@@ -25,4 +25,20 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
+  describe "#create" do
+    context "valid attributes" do
+      let(:user_params) { { :user => {:first_name => first_name, :last_name => last_name, :phone => phone, :email => email } } }
+      let(:create_user) { post :create, :params => user_params}
+
+      it "creates a user" do
+        expect{create_user}.to change{User.count}.by(1)
+      end
+      it "redirects to show template" do
+      expect(create_user).to redirect_to :action => :show, :id => assigns(:user).id
+      end
+      it "flashes a success message" do
+      expect(create_user.request.flash[:success]).to_not be_nil
+      end
+    end
+  end
 end
