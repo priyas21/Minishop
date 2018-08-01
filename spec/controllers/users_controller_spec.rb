@@ -26,8 +26,8 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "#create" do
+    subject(:create_user) { post :create, :params => user_params }
     let(:user_params) { { :user => {:first_name => first_name, :last_name => last_name, :phone => phone, :email => email } } }
-    let(:create_user) { post :create, :params => user_params}
 
     context "valid attributes" do
 
