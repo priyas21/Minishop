@@ -5,4 +5,4 @@ Feature: Welcome user to Minishop
 
 Scenario: Welcome page
 Given User is on welcome page
-Then User should see 'Welcome to Minishop'
+ Then User should see 'Welcome to Minishop'
