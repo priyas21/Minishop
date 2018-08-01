@@ -8,13 +8,14 @@
     <th colspan="2">Actions</th>
   </tr>
 
-  <tr>
-    <% @users.each do |user| %>
+
+  <% @users.each do |user| %>
+    <tr>
       <td><%= user.first_name %></td>
       <td><%= user.last_name %></td>
       <td><%= user.phone %></td>
       <td><%= user.email %></td>
       <td><%= link_to 'Show', user_path(user) %></td>
-  </tr>
-    <% end %>
+    </tr>
+  <% end %>
 </table>
