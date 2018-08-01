@@ -26,9 +26,10 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "#create" do
-    context "valid attributes" do
       let(:user_params) { { :user => {:first_name => first_name, :last_name => last_name, :phone => phone, :email => email } } }
       let(:create_user) { post :create, :params => user_params}
+
+    context "valid attributes" do
 
       it "creates a user" do
         expect{create_user}.to change{User.count}.by(1)
