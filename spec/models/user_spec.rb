@@ -39,7 +39,6 @@ RSpec.describe User, type: :model do
   end
 
   context "without an email" do
-    let(:first_name) { "Priya" }
     let(:email) { " " }
 
     it "is not valid" do
