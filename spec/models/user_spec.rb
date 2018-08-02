@@ -100,7 +100,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  context "with invalid email address" do
+  context "when email address is malformed" do
     invalid_addresses = %w[user@example,com user_at_foo.org user.name@example.
                            foo@bar_baz.com foo@bar+baz...com]
 
@@ -112,7 +112,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  context "with valid email address" do
+  context "when email address is not malformed" do
     valid_addresses = %w[user@example.com USER@foo.com A_US-ER@foo.bar.org
                          first.last@foo.jp alice+bob@baz.cn]
 
