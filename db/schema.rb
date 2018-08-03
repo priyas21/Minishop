@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_03_001007) do
+ActiveRecord::Schema.define(version: 2018_08_03_013232) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2018_08_03_001007) do
     t.string "icp"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["address", "icp"], name: "index_registries_on_address_and_icp", unique: true
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
