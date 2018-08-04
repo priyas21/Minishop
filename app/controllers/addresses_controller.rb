@@ -8,6 +8,9 @@ class AddressesController < ApplicationController
     redirect_to user_address_path(@user, @address)
   end
 
+  def show
+    @user = User.find(params[:user_id])
+    @address = @user.addresses.find(params[:id])
   end
 
   private
