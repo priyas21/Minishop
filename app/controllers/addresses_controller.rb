@@ -5,7 +5,9 @@ class AddressesController < ApplicationController
     if @address.errors.any?
       flash[:notice] = @address.errors.full_messages.to_sentence
     end
-    redirect_to user_path(@user)
+    redirect_to user_address_path(@user, @address)
+  end
+
   end
 
   private
