@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_03_015220) do
+ActiveRecord::Schema.define(version: 2018_08_05_214120) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2018_08_03_015220) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
