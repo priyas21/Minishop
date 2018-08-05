@@ -1,11 +1,12 @@
 class AddressesController < ApplicationController
   before_action :logged_in_user, only: [:edit, :update]
   before_action :correct_address, only: [:edit, :update]
+
   def create
     @user = User.find(params[:user_id])
     @address = @user.addresses.create(address_params)
     if @address.errors.any?
-      flash[:notice] = @address.errors.full_messages.to_sentence
+      flash.now[:danger] = @address.errors.full_messages.to_sentence
     end
     redirect_to user_address_path(@user, @address)
   end
