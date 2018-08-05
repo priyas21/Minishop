@@ -3,6 +3,15 @@ class SessionsController < ApplicationController
   end
 
   def create
+    user = User.find_by(email: params[:session][:email].downcase)
+    if user
+      log_in(user)
+      address = current_user.addresses.find_by(user_id: current_user.id)
+      redirect_to user_address_path(current_user, address)
+    else
+      flash.now[:danger] = "Invalid email addrress."
+      render 'new'
+    end
   end
 
   def destroy
