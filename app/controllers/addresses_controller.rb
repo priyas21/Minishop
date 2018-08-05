@@ -13,6 +13,18 @@ class AddressesController < ApplicationController
     @address = @user.addresses.find(params[:id])
   end
 
+  def edit
+  end
+
+  def update
+    if @address.update_attributes(address_params)
+      flash.now[:success] = "Address updated"
+      redirect_to user_address_path(@user, @address)
+    else
+      render 'edit'
+    end
+  end
+
   private
   def address_params
     params.require(:address).permit(:address1, :address2, :city, :district, :suburb, :post_code, :icp_number)
