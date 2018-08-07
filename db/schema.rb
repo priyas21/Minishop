@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_06_073659) do
+ActiveRecord::Schema.define(version: 2018_08_07_020427) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -25,14 +25,6 @@ ActiveRecord::Schema.define(version: 2018_08_06_073659) do
     t.string "icp_number"
     t.boolean "approval_status", default: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
-  end
-
-  create_table "registries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "address"
-    t.string "icp"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["address", "icp"], name: "index_registries_on_address_and_icp", unique: true
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
