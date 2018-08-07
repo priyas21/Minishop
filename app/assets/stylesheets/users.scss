@@ -3,22 +3,23 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
  @import "bootstrap";
 
- #users {
+
+ .table {
    border-collapse: collapse;
    width: 100%;
  }
 
- #users tr:nth-child(even) {
+ .table tr:nth-child(even) {
    background-color: #f2f2f2;
  }
 
- #users tr:hover {
+ .table tr:hover {
    background-color: #ddd;
  }
 
- #users th {
+ .table th {
    padding-top: 12px;
-   padding-bottom: 12px;
+   padding-bottom: 15px;
    text-align: left;
    background-color: #9fdb87;
    color: #ffff;
@@ -28,8 +29,8 @@
    font-family: 'Courier New', Courier, monospace;
  }
 
- #users td {
+ .table td {
    text-align: left;
-   text-transform: initial;
+   text-transform: uppercase;
    font-size: 17px;
  }
