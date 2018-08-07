@@ -1,9 +1,13 @@
 class Admin::AddressesController < ApplicationController
-  before_action :set_user, only: [:edit, :update]
+  before_action :set_user, only: [:show, :edit, :update]
   before_action :require_admin, only: [:index, :edit, :update]
 
   def index
     @users = User.where(admin: false)
+  end
+
+  def show
+
   end
 
   def edit
