@@ -7,7 +7,11 @@ class SessionsController < ApplicationController
     if user
       log_in(user)
       address = current_user.addresses.find_by(user_id: current_user.id)
-      redirect_to user_address_path(current_user, address)
+      if current_user.admin?
+        redirect_to admin_addresses_path
+      else
+        redirect_to user_address_path(current_user, address)
+      end
     else
       flash.now[:danger] = "Invalid email addrress."
       render 'new'
