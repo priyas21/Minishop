@@ -1,0 +1,44 @@
+<%= render "sidebar" %>
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-body">
+   <h4> <strong>Name: </strong>
+    <%= @user.first_name %>
+    <%= @user.last_name %>
+  </h4>
+
+  <h4>
+    <strong>Email address: </strong>
+    <%= @user.email %>
+  </h4>
+
+  <h4>
+    <strong>Contact phone: </strong>
+    <%= @user.phone %>
+  </h4>
+
+
+  <h4> <strong>Address: </strong>
+    <%= @address.address1 %>,
+    <%= @address.city %>,
+    <%= @address.district %>,
+    <%= @address.suburb %>
+  </h4>
+
+
+  <h4><strong>Post Code: </strong>
+    <%= @address.post_code %>
+  </h4>
+
+  <h4>
+    <strong>ICP number: </strong>
+    <%= @address.icp_number %>
+  </h4>
+
+  <% if @address.approval_status %>
+    <button type="button", class="btn btn-success">Approved</button>
+  <% else %>
+  <button type="button" , class="btn btn-danger">Not Approved</button>
+  <% end %>
+  </div>
