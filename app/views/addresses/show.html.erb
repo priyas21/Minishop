@@ -35,6 +35,12 @@
     <%= @address.icp_number %>
   </h4>
 
-  <button type="button", class="btn btn-danger">Not approved</button>
+  <% if !current_user.admin? %>
+    <% if @address.approval_status %>
+      <button type="button", class="btn btn-success">Approved</button>
+    <% else %>
+    <button type="button" , class="btn btn-danger">Not Approved</button>
+    <% end %>
+  <% end %>
 
   </div>
