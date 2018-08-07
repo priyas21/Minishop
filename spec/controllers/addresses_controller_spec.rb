@@ -30,6 +30,20 @@ RSpec.describe AddressesController, type: :controller do
       end
     end
 
+    context "with invalid attributes" do
+      let(:address1) { "" }
+      let(:city) { "" }
+      let(:district) { "" }
+      let(:suburb) { "" }
+      let(:post_code) { "" }
+
+      it "will not create an address" do
+        expect{create_address}.to change{Address.count}.by(0)
+      end
+      it "flashes error messages" do
+        expect(create_address.request.flash[:notice]).to_not be_nil
+      end
+    end
   end
 
 end
