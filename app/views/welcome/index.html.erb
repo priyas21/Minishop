@@ -1,5 +1,7 @@
 <div class="center jumbotron">
     <h1>Welcome to Minishop</h1>
     <p>We are NZ's Leading Renewable &amp; 100% Green Electricity Provider</p>
-    <%= link_to "Sign up now!",  new_user_path, class: "btn btn-lg btn-primary" %>
+    <% if !logged_in? %>
+        <%= link_to "Sign up now!",  new_user_path, class: "btn btn-lg btn-primary" %>
+    <% end %>
 </div>
