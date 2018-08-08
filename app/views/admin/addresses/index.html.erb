@@ -9,7 +9,7 @@
     <tr>
       <td><%= user.first_name %> <%= user.last_name %></td>
       <td><%= link_to "Manage", admin_address_path(user) , class: "btn btn-primary" %></td>
-      <td><%= link_to "Delete",admin_addresses_path method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary" %></td>
+      <td><%= link_to "Destroy", admin_address_path(user), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary" %></td>
     </tr>
   <% end %>
 </table>
