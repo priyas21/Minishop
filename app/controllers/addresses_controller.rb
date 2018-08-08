@@ -8,7 +8,7 @@ class AddressesController < ApplicationController
     if @address.errors.any?
       flash.now[:danger] = @address.errors.full_messages.to_sentence
     end
-    redirect_to user_address_path(@user, @address)
+      redirect_to user_address_path(@user, @address)
   end
 
   def show
@@ -21,7 +21,7 @@ class AddressesController < ApplicationController
 
   def update
     if @address.update_attributes(address_params)
-      flash.now[:success] = "Address updated"
+      flash[:success] = "Address updated"
       redirect_to user_address_path(@user, @address)
     else
       flash.now[:danger] = @address.errors.full_messages.to_sentence
