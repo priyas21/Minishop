@@ -89,8 +89,10 @@
     text-align: center;
   }
 
-  .alert-danger {
-    margin: 0 250px 0 200px;
+  div.alert-danger {
+   position: absolute;
+   left: 1010px;
+   width: 300px;
   }
 
   p {
