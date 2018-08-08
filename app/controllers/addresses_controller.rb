@@ -24,6 +24,7 @@ class AddressesController < ApplicationController
       flash.now[:success] = "Address updated"
       redirect_to user_address_path(@user, @address)
     else
+      flash.now[:danger] = @address.errors.full_messages.to_sentence
       render 'edit'
     end
   end
