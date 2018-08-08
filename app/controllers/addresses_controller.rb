@@ -3,9 +3,11 @@ class AddressesController < ApplicationController
     @user = User.find(params[:user_id])
     @address = @user.addresses.create(address_params)
     if @address.errors.any?
-      flash[:notice] = @address.errors.full_messages.to_sentence
+      flash[:danger] = @address.errors.full_messages.to_sentence
+      redirect_to user_path(@user)
+    else
+      redirect_to user_address_path(@user, @address)
     end
-    redirect_to user_address_path(@user, @address)
   end
 
   def show
