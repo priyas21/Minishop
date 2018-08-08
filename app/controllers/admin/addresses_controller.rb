@@ -1,6 +1,6 @@
 class Admin::AddressesController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
-  before_action :require_admin, only: [:index, :edit, :update]
+  before_action :require_admin, only: [:index, :edit, :update, :destroy]
 
   def index
     @users = User.where(admin: false)
@@ -20,6 +20,12 @@ class Admin::AddressesController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "User deleted"
+    redirect_to admin_addresses_path
   end
 
   private
