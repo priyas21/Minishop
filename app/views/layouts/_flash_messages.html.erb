@@ -6,9 +6,11 @@
       </ul>
   <% else %>
     <div class="alert alert-danger">
-      <ul>
-        <li><%= message %></li>
-      </ul>
+      <% message.split(",").each do |msg| %>
+        <ul>
+          <li><%= msg %></li>
+        </ul>
+      <% end %>
     </div>
   <% end%>
 <% end %>
