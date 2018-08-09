@@ -41,7 +41,7 @@ RSpec.describe AddressesController, type: :controller do
         expect{create_address}.to change{Address.count}.by(0)
       end
       it "flashes error messages" do
-        expect(create_address.request.flash[:notice]).to_not be_nil
+        expect(create_address.request.flash[:danger]).to_not be_nil
       end
     end
   end
