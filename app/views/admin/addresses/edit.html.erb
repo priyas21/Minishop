@@ -25,8 +25,10 @@
       <%= f.label :post_code %>
       <%= f.text_field :post_code, class: "form-control" %>
 
-      <%= f.label :icp_number %>
-      <%= f.text_field :icp_number, class: "form-control" %>
+      <%= f.fields_for :icp do |icp_form| %>
+        <%= icp_form.label :number, "ICP Number" %>
+        <%= icp_form.text_field :number, class: "form-control" %>
+      <% end %>
 
       <%= f.check_box :approval_status %>
       <%= label_tag(:approval_status, "Approved") %>
