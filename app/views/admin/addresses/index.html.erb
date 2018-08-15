@@ -1,15 +1,26 @@
-<h1 class="center">All Users</h1>
+<h1 class="center">Properties</h1>
 <table class="table table-striped table-responsive">
   <tr>
-    <th> Name</th>
+    <th> Address</th>
+    <th>City</th>
+    <th>District</th>
+    <th>Suburb</th>
+    <th>Post Code</th>
+    <th>Approval Status</th>
     <th colspan="2">Actions</th>
   </tr>
 
-  <% @users.each do |user| %>
+  <% @addresses.each do |address| %>
     <tr>
-      <td><%= user.first_name %> <%= user.last_name %></td>
-      <td><%= link_to "Manage", admin_address_path(user) , class: "btn btn-primary" %></td>
-      <td><%= link_to "Destroy", admin_address_path(user), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary" %></td>
+      <td><%= address.address1 %>  <%= address.address2 %></td>
+      <td><%= address.city %></td>
+      <td><%= address.district %></td>
+      <td><%= address.suburb %></td>
+      <td><%= address.post_code %></td>
+      <td><%= address.approval_status %></td>
+      <td>
+        <%= link_to "Manage", admin_user_address_path(@user, address) , class: "btn btn-primary" %>
+      </td>
     </tr>
   <% end %>
 </table>
