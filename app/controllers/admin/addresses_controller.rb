@@ -3,7 +3,8 @@ class Admin::AddressesController < ApplicationController
   before_action :require_admin, only: [:index, :edit, :update, :destroy]
 
   def index
-    @users = User.where(admin: false)
+    @user = User.find(params[:user_id])
+    @addresses = @user.addresses.all
   end
 
   def show
