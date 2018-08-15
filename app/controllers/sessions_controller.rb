@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       log_in(user)
       address = current_user.addresses.find_by(user_id: current_user.id)
       if current_user.admin?
-        redirect_to admin_addresses_path
+        redirect_to admin_users_path
       else
         redirect_to user_address_path(current_user, address)
       end
