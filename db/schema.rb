@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_07_020427) do
+ActiveRecord::Schema.define(version: 2018_08_13_090918) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -33,6 +33,17 @@ ActiveRecord::Schema.define(version: 2018_08_07_020427) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "register_serials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "meter_number"
+    t.string "register_number"
+    t.string "register_decimals"
+    t.bigint "icp_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["icp_id"], name: "index_register_serials_on_icp_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email"
     t.string "phone"
@@ -45,4 +56,5 @@ ActiveRecord::Schema.define(version: 2018_08_07_020427) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "register_serials", "icps"
 end
