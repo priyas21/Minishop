@@ -31,7 +31,7 @@ class AddressesController < ApplicationController
 
   private
   def address_params
-    params.require(:address).permit(:address1, :address2, :city, :district, :suburb, :post_code, :icp_number)
+    params.require(:address).permit(:address1, :address2, :city, :district, :suburb, :post_code, icp_attributes: [:number])
   end
 
   def logged_in_user
