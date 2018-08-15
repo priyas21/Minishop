@@ -20,9 +20,11 @@
       <%= f.label :post_code %>
       <%= f.text_field :post_code, class: "form-control" %>
 
-      <%= f.label :icp_number %>
-      <%= f.text_field :icp_number, class: "form-control" %>
-      <h5>(ICP number is Optional)</h5>
+      <%= f.fields_for :icp do |icp_form| %>
+        <%= icp_form.label :number, "ICP Number" %>
+        <%= icp_form.text_field :number, class: "form-control" %>
+      <% end %>
+      <h5>(ICP number is Optional. If you don't know the ICP number, leave the field as it is.)</h5>
 
       <%= f.submit yield(:button_text), class: "btn btn-primary btn-lg" %>
 
