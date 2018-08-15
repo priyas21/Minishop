@@ -1,9 +1,10 @@
 <% flash.each do |message_type, message| %>
   <% if message_type == "success" %>
-    <div class="alert alert-success">
+    <div class="badge badge-pill badge-success">
       <ul>
         <li><%= message %> </li>
       </ul>
+    </div>
   <% else %>
     <div class="alert alert-danger">
       <% message.split(",").each do |msg| %>

@@ -112,3 +112,12 @@
   .btn-danger {
     background-color: $error-color;
   }
+  }
+
+  .badge {
+    position: absolute;
+    left: 1000px;
+    width: 350px;
+    font-size: 15px;
+    background-color: #adcfa0;
+  }
