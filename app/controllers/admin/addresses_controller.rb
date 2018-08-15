@@ -18,7 +18,7 @@ class Admin::AddressesController < ApplicationController
   def update
     if @address.update_attributes(address_params)
       flash[:success] = "Address Updated"
-      redirect_to admin_address_path(@user)
+      redirect_to admin_user_address_path(@user)
     else
       flash.now[:danger] = @address.errors.full_messages.to_sentence
       render 'edit'
