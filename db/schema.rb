@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 2018_08_07_020427) do
     t.string "district"
     t.string "suburb"
     t.string "post_code"
-    t.string "icp_number"
     t.boolean "approval_status", default: false
     t.bigint "icp_id"
     t.index ["icp_id"], name: "index_addresses_on_icp_id"
