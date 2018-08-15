@@ -1,5 +1,6 @@
 class Address < ApplicationRecord
   belongs_to :user
+  belongs_to :icp
 
   validates :address1, presence: true
   validates :city, presence: true
