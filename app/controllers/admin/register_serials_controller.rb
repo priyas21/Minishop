@@ -1,5 +1,5 @@
 class Admin::RegisterSerialsController < ApplicationController
-  before_action :find_id, only: [:index, :new, :create, :show]
+  before_action :find_id, only: [:index, :new, :create, :show, :edit, :update]
 
   def index
     @register_serials = @address.icp.register_serials.all
@@ -16,6 +16,21 @@ class Admin::RegisterSerialsController < ApplicationController
       redirect_to admin_user_address_icp_register_serial_path(@user, @address, @address.icp, @register_serial)
     else
       render 'new'
+    end
+  end
+
+  def edit
+    @register_serial = RegisterSerial.find(params[:id])
+  end
+
+  def update
+    @register_serial = RegisterSerial.find(params[:id])
+    if @register_serial.update_attributes(register_params)
+      flash[:success] = "Register Serials Updated"
+      redirect_to admin_user_address_icp_register_serials_path(@user, @address, @address.icp)
+    else
+      flash.now[:danger] = "There's an error updating"
+      render 'edit'
     end
   end
 
