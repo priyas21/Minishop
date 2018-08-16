@@ -1,0 +1,21 @@
+<%= render "admin/addresses/sidebar" %>
+<% provide(:button_text, "Save changes") %>
+<h1 class="center">Update Register Serials</h1>
+<div class="form-group">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for [ :admin, @user, @address, @address.icp, @register_serial] do |f| %>
+
+      <%= f.label :meter_number %>
+      <%= f.text_field :meter_number, class: "form-control" %>
+
+      <%= f.label :register_number %>
+      <%= f.text_field :register_number, class: "form-control" %>
+
+      <%= f.label :register_decimals %>
+      <%= f.text_field :register_decimals, class: "form-control" %>
+
+      <%= f.submit  yield(:button_text), class: "btn btn-primary btn-lg" %>
+
+    <% end %>
+  </div>
+</div>
