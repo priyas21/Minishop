@@ -1,5 +1,5 @@
 class Admin::RegisterSerialsController < ApplicationController
-  before_action :find_id, only: [ :new, :create]
+  before_action :find_id, only: [ :new, :create, :show]
 
   def new
     @register_serial = RegisterSerial.new
@@ -13,6 +13,10 @@ class Admin::RegisterSerialsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def show
+    @register_serial = RegisterSerial.find(params[:id])
   end
 
   private
