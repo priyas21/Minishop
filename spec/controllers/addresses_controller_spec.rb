@@ -40,7 +40,7 @@ RSpec.describe AddressesController, type: :controller do
       it "will not create an address" do
         expect{create_address}.to change{Address.count}.by(0)
       end
-      it "flashes error messages" do
+      it "will show the user the error" do
         expect(create_address.request.flash[:danger]).to_not be_nil
       end
     end
