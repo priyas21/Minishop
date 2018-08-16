@@ -1,5 +1,9 @@
 class Admin::RegisterSerialsController < ApplicationController
-  before_action :find_id, only: [ :new, :create, :show]
+  before_action :find_id, only: [:index, :new, :create, :show]
+
+  def index
+    @register_serials = @address.icp.register_serials.all
+  end
 
   def new
     @register_serial = RegisterSerial.new
