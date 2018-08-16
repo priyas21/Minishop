@@ -4,6 +4,6 @@ module AddressesHelper
   end
 
   def current_address?(address)
-    address = current_address
+    address == current_address
   end
 end
