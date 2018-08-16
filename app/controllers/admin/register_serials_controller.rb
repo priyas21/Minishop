@@ -1,5 +1,5 @@
 class Admin::RegisterSerialsController < ApplicationController
-  before_action :find_id, only: [:index, :new, :create, :show, :edit, :update]
+  before_action :find_id, only: [:index, :new, :create, :show, :edit, :update, :destroy]
 
   def index
     @register_serials = @address.icp.register_serials.all
@@ -36,6 +36,13 @@ class Admin::RegisterSerialsController < ApplicationController
 
   def show
     @register_serial = RegisterSerial.find(params[:id])
+  end
+
+  def destroy
+    @register_serial = RegisterSerial.find(params[:id])
+    @register_serial.destroy
+    flash[:success] = "Register serial deleted"
+    redirect_to  admin_user_address_icp_register_serials_path(@user, @address, @address.icp)
   end
 
   private
