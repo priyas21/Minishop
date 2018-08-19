@@ -2,13 +2,6 @@ Given("I am on signup page") do
   visit new_user_path
 end
 
-When("I fill in {string} with {string}") do |field, value|
-  fill_in(field, :with => value)
-end
-When("I click on {string}") do |btn|
-  click_button(btn)
-end
-
 When("I enter my personal details") do
   steps %{
     When I fill in "First name" with "p21"
