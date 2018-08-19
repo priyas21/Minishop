@@ -4,13 +4,6 @@ RSpec.describe UsersController, type: :controller do
 
   subject(:user) { User.create!(:first_name => first_name, :last_name => last_name, :phone => phone, :email => email) }
 
-  describe "#index" do
-    before { get :index }
-      it "assigns @user" do
-        expect(assigns(:users)).to eq User.all
-      end
-    end
-
   describe "#new" do
     context "when initialized" do
       before { get :new }
