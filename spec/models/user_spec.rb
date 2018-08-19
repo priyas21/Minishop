@@ -139,11 +139,9 @@ RSpec.describe User, type: :model do
     before do
       user.email = mixed_case_email
       user.save
-      # byebug
     end
 
     it "will be saved in the database as lowercase" do
-      # expect(user.email).to eq 'fOO@example.com'
       expect(user.reload.email).to eq mixed_case_email.downcase
     end
   end
