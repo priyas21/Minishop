@@ -20,6 +20,13 @@ fixtures :users
       end
     end
   end
+
+  describe "#destroy" do
+    let(:user) { users(:lilly) }
+    let(:destroy_user) { delete :destroy, :params => { :session => {:user_id => user.id } } }
+
+    it "will log out the user" do
+      expect(destroy_user).to redirect_to root_path
     end
   end
 
