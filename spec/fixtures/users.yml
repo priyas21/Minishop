@@ -1,0 +1,14 @@
+lilly:
+  first_name: Lilly
+  last_name: S
+  email: 'lilly@example.com'
+  phone: '123456789'
+  admin: false
+
+sam:
+  first_name: Sam
+  last_name: S
+  email: 'admin@example.com'
+  phone: '123456789'
+  admin: true
+
