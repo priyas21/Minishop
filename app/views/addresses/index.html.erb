@@ -1,0 +1,33 @@
+<h1 class="center">Your Properties</h1>
+<table class="table table-striped table-responsive">
+  <tr>
+    <th> Address</th>
+    <th>City</th>
+    <th>District</th>
+    <th>Suburb</th>
+    <th>Post Code</th>
+    <th>ICP number:</th>
+    <th>Approval Status</th>
+  </tr>
+
+  <% @addresses.each do |address| %>
+    <tr>
+      <td><%= address.address1 %>  <%= address.address2 %></td>
+      <td><%= address.city %></td>
+      <td><%= address.district %></td>
+      <td><%= address.suburb %></td>
+      <td><%= address.post_code %></td>
+      <td><%= address.icp.number %></td>
+      <% if !current_user.admin? %>
+        <% if address.approval_status %>
+          <td><button type="button", class="btn btn-success">Approved</button></td>
+        <% else %>
+          <td><button type="button" , class="btn btn-danger">Not Approved</button></td>
+        <% end %>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+
+
+
