@@ -1,11 +1,25 @@
 require 'rails_helper'
 
 RSpec.describe SessionsController, type: :controller do
+fixtures :users
 
-  describe "GET #new" do
-    it "returns http success" do
-      get :new
-      expect(response).to have_http_status(:success)
+    describe "#create" do
+    let(:create_user) { post :create , :params => { :session => { :email => user.email } } }
+
+    context "when current user is not admin" do
+      let(:user) { users(:lilly) }
+      it "will log in as user" do
+        expect(create_user).to redirect_to :controller=>"addresses", :action => :index, :user_id => user.id
+      end
+    end
+
+    context "when current user is admin" do
+      let(:user) { users(:sam) }
+      it "will log in as admin" do
+        expect(create_user).to redirect_to admin_users_path
+      end
+    end
+  end
     end
   end
 
