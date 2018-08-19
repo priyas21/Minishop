@@ -32,12 +32,6 @@ class Admin::AddressesController < ApplicationController
   end
 
   private
-  def require_admin
-    unless current_user.admin?
-      redirect_to root_path
-    end
-  end
-
   def set_user
     @user = User.find(params[:user_id])
     @address = @user.addresses.find(params[:id])
