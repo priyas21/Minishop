@@ -12,8 +12,8 @@ class SessionsController < ApplicationController
         redirect_to user_addresses_path(current_user)
       end
     else
-      flash.now[:danger] = "Invalid email addrress."
-      render 'new'
+      flash[:danger] = "Invalid email addrress."
+      redirect_to login_path
     end
   end
 
