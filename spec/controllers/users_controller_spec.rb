@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
+  fixtures :users, :addresses
 
   subject(:user) { User.create!(:first_name => first_name, :last_name => last_name, :phone => phone, :email => email) }
 
@@ -49,6 +50,33 @@ RSpec.describe UsersController, type: :controller do
       it "flashes a fail message" do
       expect(create_user.request.flash[:danger]).to_not be_nil
       end
+    end
+  end
+
+  describe "#update" do
+    let!(:user) { users(:lilly) }
+    let(:log_in_user) { post :create, :params => { :session => { :email => user.email } } }
+    let(:user_params) { { :id => user.id , :user => { :first_name => 'Lillyy',
+                          :last_name => 'S', :phone => '11111',
+                          :email => 'lilly@example.com' } } }
+    let(:update_user) { patch :update, :params => user_params }
+    before(:each) do
+      user
+      log_in_user
+  end
+
+    context "with valid attributes" do
+
+      it "will flashes successfull message" do
+        expect(update_user.request.flash[:success]).to_not be_nil
+      end
+
+      xit "will redirect to show page" do
+        expect(update_user).to redirect_to :action => :show, :user_id => user.id, :id => addresses(:first_property).id
+      end
+    end
+
+    context "with invalid attributes" do
     end
   end
 end
