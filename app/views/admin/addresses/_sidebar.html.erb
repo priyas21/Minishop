@@ -1,7 +1,7 @@
 <div class="sidebar">
   <%= link_to "All Users", admin_users_path %>
   <%= link_to "User Details", admin_user_address_path(@user, @address) %>
-  <%= link_to "Edit User Details", edit_admin_user_address_path(@user, @address) %>
+  <%= link_to "Approve User Property", edit_admin_user_address_path(@user, @address) %>
   <%= link_to 'Add Register Serials', new_admin_user_address_icp_register_serial_path(@user, @address, @address.icp) %>
   <%= link_to 'Show User Register Serials', admin_user_address_icp_register_serials_path(@user, @address, @address.icp) %>
 </div>
