@@ -1,5 +1,5 @@
-class Admin::UsersController < ApplicationController
-  before_action :require_admin, only: [ :index ]
+class Admin::UsersController < AdminController
+
  def index
     @users = User.where(admin: false)
   end

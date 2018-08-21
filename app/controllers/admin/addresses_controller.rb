@@ -1,6 +1,5 @@
-class Admin::AddressesController < ApplicationController
+class Admin::AddressesController < AdminController
   before_action :set_user, only: [:show, :edit, :update]
-  before_action :require_admin, only: [:index, :edit, :update, :destroy]
 
   def index
     @user = User.find(params[:user_id])
