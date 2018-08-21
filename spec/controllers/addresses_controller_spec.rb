@@ -12,8 +12,8 @@ RSpec.describe AddressesController, type: :controller do
   describe "#index" do
    let!(:user) { users(:lilly) }
    let!(:address) { addresses(:first_property) }
-   let(:show_addresses) { get :index, :params => address_params }
-   let(:address_params) { { :user_id => user.id, :id => address.id } }
+   let(:show_addresses) { get :index, :params => user_id}
+   let(:user_id) { { :user_id => user.id } }
 
    before { session[:user_id] = user.id }
 
