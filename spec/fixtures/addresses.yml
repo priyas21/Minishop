@@ -5,6 +5,7 @@ first_property:
   suburb: tawa
   post_code: 1111
   user: lilly
+  icp: icp1
 
 second_property:
   address1: 19a mahoe st
@@ -13,3 +14,4 @@ second_property:
   suburb: tawa
   post_code: 1111
   user: lilly
+  icp: icp2
