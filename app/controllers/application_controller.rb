@@ -1,11 +1,31 @@
 class ApplicationController < ActionController::Base
-  include SessionsHelper
-  include AddressesHelper
+  def log_in(user)
+    session[:user_id] = user.id
+  end
 
-  private
-  def require_admin
-    unless current_user.admin?
-      redirect_to root_path
-    end
+  def current_user
+    @current_user ||= User.find_by(id: session[:user_id])
+  end
+
+  def logged_in?
+    !current_user.nil? && !current_address.nil?
+  end
+
+  def log_out
+    session.delete(:user_id)
+    @current_user = nil
+    @current_address = nil
+  end
+
+  def current_user?(user)
+    user == current_user
+  end
+
+  def current_address
+    @address ||= current_user.addresses.first
+  end
+
+  def current_address?(address)
+    address == current_address
   end
 end
