@@ -57,6 +57,19 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
+  describe "#show" do
+    let!(:user) { users(:lilly) }
+    let(:show_user) {get :show, :params => user_id }
+    let(:user_id) { { :id => user.id } }
+    before do
+      user
+      session[:user_id] = user.id
+    end
+
+    it "will render the show template of user " do
+      expect(show_user).to render_template(:show)
+    end
+  end
   describe "#update" do
     let!(:user) { users(:lilly) }
     let(:log_in_user) { post :create, :params => { :session => { :email => user.email } } }
