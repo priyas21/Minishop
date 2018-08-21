@@ -1,12 +1,26 @@
 require 'rails_helper'
 
 RSpec.describe AddressesController, type: :controller do
+  fixtures :users, :addresses
 
   let!(:user) { User.create!(:first_name => first_name, :last_name => last_name, :phone => phone, :email => email) }
   let(:first_name) { "Priya" }
   let(:last_name) { "Sodhi" }
   let(:phone) { "0226258409" }
   let(:email) { "p@gmail.com" }
+
+  describe "#index" do
+   let!(:user) { users(:lilly) }
+   let!(:address) { addresses(:first_property) }
+   let(:show_addresses) { get :index, :params => address_params }
+   let(:address_params) { { :user_id => user.id, :id => address.id } }
+
+   before { session[:user_id] = user.id }
+
+    it "will display all the addresses of the user" do
+      expect(show_addresses).to render_template(:index)
+    end
+  end
 
   describe "#create" do
     let(:create_address) { post :create, :params => address_params }
