@@ -28,9 +28,11 @@ RSpec.describe UsersController, type: :controller do
       it "creates a user" do
         expect{create_user}.to change{User.count}.by(1)
       end
+
       it "redirects to show template" do
       expect(create_user).to redirect_to :action => :show, :id => assigns(:user).id
       end
+
       it "flashes a success message" do
       expect(create_user.request.flash[:success]).to_not be_nil
       end
@@ -44,9 +46,11 @@ RSpec.describe UsersController, type: :controller do
       it "will not create a user" do
       expect{create_user}.to change{User.count}.by(0)
       end
+
       it "renders new template" do
       expect(create_user).to render_template(:new)
       end
+
       it "flashes a fail message" do
       expect(create_user.request.flash[:danger]).to_not be_nil
       end
