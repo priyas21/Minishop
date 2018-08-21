@@ -70,6 +70,22 @@ RSpec.describe UsersController, type: :controller do
       expect(show_user).to render_template(:show)
     end
   end
+
+  describe "#edit" do
+   let!(:user) { users(:lilly) }
+   let(:edit_user) { get :edit , :params => user_id }
+   let(:user_id) { { :id => user.id  } }
+
+   before(:each) do
+    user
+    session[:user_id] = user.id
+   end
+
+   it "will alllow the user to edit their perosnal details" do
+    expect(edit_user).to render_template(:edit)
+   end
+  end
+
   describe "#update" do
     let!(:user) { users(:lilly) }
     let(:log_in_user) { post :create, :params => { :session => { :email => user.email } } }
