@@ -22,6 +22,19 @@ RSpec.describe AddressesController, type: :controller do
     end
   end
 
+  describe "#show" do
+   let!(:user) { users(:lilly) }
+   let!(:address) { addresses(:first_property) }
+   let(:show_address) { get :show, :params => address_params }
+   let(:address_params) { { :user_id => user.id, :id => address.id } }
+
+   before { session[:user_id] = user.id }
+
+    it "will display the selected address of the user" do
+      expect(show_address).to render_template(:show)
+    end
+  end
+
   describe "#create" do
     let(:create_address) { post :create, :params => address_params }
     let(:address_params) { { :address => { :address1 => address1, :address2 => address2, :city => city,
@@ -57,6 +70,41 @@ RSpec.describe AddressesController, type: :controller do
       it "will show the user the error" do
         expect(create_address.request.flash[:danger]).to_not be_nil
       end
+    end
+  end
+
+  describe "#update" do
+    let!(:user) { users(:lilly) }
+    let!(:address) { addresses(:first_property) }
+    let(:update_user_address) { patch :update, :params => address_params }
+    let(:address_params) { { :user_id => user.id , :id => address.id, :address => {:address1 => "13 mahoe st", :city => "Welly", :district => "prirua",
+                              :suburb => "ascot park", :post_code => "11111"  } } }
+
+    before(:each) do
+      session[:user_id] = user.id
+    end
+
+    context "with valid attributes" do
+      it "will flash successfull message" do
+        expect(update_user_address.request.flash[:success]).to_not be_nil
+      end
+
+      it "will redirect to user's addresses show page" do
+      expect(update_user_address).to redirect_to("/users/#{ assigns(:user).id }/addresses/#{ assigns(:address).id }")
+      end
+    end
+
+    context "with invalid attributes" do
+      let(:address_params) { { :user_id => user.id , :id => address.id, :address => {:address1 => "13 mahoe st", :city => "Welly", :district => "prirua",
+                              :suburb => "", :post_code => "11111"  } } }
+
+        it "will display error messages" do
+          expect(update_user_address.request.flash[:danger]).to_not be_nil
+        end
+
+        it "will render the edit template" do
+          expect(update_user_address).to render_template(:edit)
+        end
     end
   end
 
