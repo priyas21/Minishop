@@ -88,28 +88,34 @@ RSpec.describe UsersController, type: :controller do
 
   describe "#update" do
     let!(:user) { users(:lilly) }
-    let(:log_in_user) { post :create, :params => { :session => { :email => user.email } } }
-    let(:user_params) { { :id => user.id , :user => { :first_name => 'Lillyy',
-                          :last_name => 'S', :phone => '11111',
-                          :email => 'lilly@example.com' } } }
+    let!(:address) { addresses(:first_property) }
     let(:update_user) { patch :update, :params => user_params }
     before(:each) do
       user
-      log_in_user
-  end
+      session[:user_id] = user.id
+    end
 
     context "with valid attributes" do
-
+      let(:user_params) { { :id => user.id , :user => { :first_name => 'Lillyy',
+                          :last_name => 'S', :phone => '11111',
+                          :email => 'lilly@example.com' } } }
       it "will flashes successfull message" do
         expect(update_user.request.flash[:success]).to_not be_nil
       end
 
-      xit "will redirect to show page" do
-        expect(update_user).to redirect_to :action => :show, :user_id => user.id, :id => addresses(:first_property).id
+      it "will redirect to show page" do
+        expect(update_user).to redirect_to("/users/#{ assigns(:user).id }/addresses/#{ assigns(:address).id }")
       end
     end
 
     context "with invalid attributes" do
+      let(:user_params) { { :id => user.id , :user => { :first_name => 'Lillyy',
+                          :last_name => '', :phone => '11111',
+                          :email => 'lill876876y' } } }
+
+      it "will render the edit page" do
+        expect(update_user).to render_template(:edit)
+      end
     end
   end
 end
