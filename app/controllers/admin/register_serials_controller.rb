@@ -1,5 +1,5 @@
 class Admin::RegisterSerialsController < AdminController
-  before_action :find_id, only: [:index, :new, :show, :edit, :update, :destroy]
+  before_action :find_id
 
   def index
     @register_serials = @address.icp.register_serials.all
