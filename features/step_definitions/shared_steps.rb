@@ -2,6 +2,12 @@ Given("I am on welcome page") do
   visit root_path
 end
 
+Given("Admin is logged in") do
+  visit login_path
+  fill_in("Email address", :with => "admin@example.com")
+  click_button("Log in")
+end
+
 When("I fill in {string} with {string}") do |field, value|
   fill_in(field, :with => value)
 end
