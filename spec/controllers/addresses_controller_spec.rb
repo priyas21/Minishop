@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe AddressesController, type: :controller do
-  fixtures :users, :addresses
+  fixtures :all
 
   let!(:user) { User.create!(:first_name => first_name, :last_name => last_name, :phone => phone, :email => email) }
   let(:first_name) { "Priya" }
