@@ -7,7 +7,7 @@ When("I enter my personal details") do
     When I fill in "First name" with "p21"
      And I fill in "Surname" with "s"
      And I fill in "Contact phone" with "1234567898"
-     And I fill in "Email address" with "lilly@example.com"
+     And I fill in "Email address" with "lilly2120@example.com"
   }
 end
 
