@@ -1,2 +1,11 @@
 register_serial1:
+  meter_number: '654'
+  register_number: '65'
+  register_decimals: '7'
   icp: icp1
+
+register_serial2:
+  meter_number: '654'
+  register_number: '68'
+  register_decimals: '9'
+  icp: icp2
