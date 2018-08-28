@@ -6,7 +6,7 @@ RSpec.describe Admin::RegisterSerialsController, type: :controller do
   let(:admin) { users(:sam)}
   let(:address) { addresses(:first_property) }
   let(:icp) { icps(:icp1) }
-  let(:register_serial) { register_serials(:register_serial1) }
+
   before(:each) do
     session[:user_id] = admin.id
   end
@@ -42,20 +42,20 @@ RSpec.describe Admin::RegisterSerialsController, type: :controller do
       :address_id => address.id,
       :icp_id => icp.id  } }
 
-    it "will display all the register serials of the user's property" do
-      expect(show_all_register_serials).to render_template(:index)
+      it "will display all the register serials of the user's property" do
+        expect(show_all_register_serials).to render_template(:index)
+      end
     end
-  end
 
-  describe "#edit" do
+    describe "#edit" do
       let(:edit_register_serial) { get :edit, :params => register_serial_params }
 
       it "will allow the admin to edit register serial" do
         expect(edit_register_serial).to render_template(:edit)
-  end
+      end
     end
 
-  describe "#update" do
+    describe "#update" do
       let(:update_register_serial) { patch :update, :params => updated_params }
 
       context "with updated attributes" do
@@ -79,22 +79,22 @@ RSpec.describe Admin::RegisterSerialsController, type: :controller do
             expect(update_register_serial).to redirect_to admin_user_address_icp_register_serials_path(user, address, address.icp)
           end
         end
-  end
+      end
 
     describe "#show" do
       let(:show_register_serial) { get :show, :params => register_serial_params }
 
-    it "will display the specified register serial" do
-      expect(show_register_serial).to render_template(:show)
+      it "will display the specified register serial" do
+        expect(show_register_serial).to render_template(:show)
+      end
     end
-  end
 
     describe "#destroy" do
       let(:delete_register_serial) { delete :destroy, :params => register_serial_params }
 
       it "will allow the admin to delete the register serial" do
-      expect{delete_register_serial}.to change{RegisterSerial.count}.by(-1)
+        expect{delete_register_serial}.to change{RegisterSerial.count}.by(-1)
+      end
     end
   end
-end
 end
