@@ -30,7 +30,23 @@ RSpec.describe Admin::RegisterSerialsController, type: :controller do
   end
 
   describe "#create" do
-  end
+    subject(:create_register_serial) { post :create, :params => create_register_serial_params }
+    let(:create_register_serial_params) { {
+        :user_id => user.id,
+        :address_id => address.id,
+        :icp_id => icp.id,
+        :register_serial => {
+          :meter_number => "654",
+          :register_number => "02",
+          :register_decimals => "2"
+          }
+        } }
+
+
+      it "creates new register serial" do
+        expect{create_register_serial}.to change{RegisterSerial.count}.by(1)
+      end
+    end
 
   context "when the register serials are existing" do
     let(:register_serial) { register_serials(:register_serial1) }
