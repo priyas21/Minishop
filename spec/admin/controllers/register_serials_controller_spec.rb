@@ -44,5 +44,12 @@ RSpec.describe Admin::RegisterSerialsController, type: :controller do
   end
 
   describe "#destroy" do
+    let(:delete_register_serial) { delete :destroy, :params => register_serial_params }
+    let(:register_serial_params) { { :user_id => user.id, :address_id => address.id,
+    :icp_id => icp.id, :id => register_serial.id } }
+
+    it "will delete the register serials linked to the property" do
+      expect{delete_register_serial}.to change{RegisterSerial.count}.by(-1)
+    end
   end
 end
