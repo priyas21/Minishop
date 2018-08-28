@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Admin::RegisterSerialsController, type: :controller do
   fixtures :all
-  let!(:user) { users(:lilly) }
-  let!(:admin) { users(:sam)}
-  let!(:address) { addresses(:first_property) }
-  let!(:icp) { icps(:icp1) }
-  let(:register_serial) {register_serials(:register_serial1) }
+  let(:user) { users(:lilly) }
+  let(:admin) { users(:sam)}
+  let(:address) { addresses(:first_property) }
+  let(:icp) { icps(:icp1) }
+  let(:register_serial) { register_serials(:register_serial1) }
   before(:each) do
     session[:user_id] = admin.id
   end
