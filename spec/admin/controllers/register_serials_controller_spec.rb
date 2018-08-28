@@ -17,10 +17,9 @@ RSpec.describe Admin::RegisterSerialsController, type: :controller do
   describe "#create" do
   end
 
-  describe "#index" do
-    let(:show_all_register_serials) { get :index, :params => register_serial_params }
+    let(:register_serial) { register_serials(:register_serial1) }
     let(:register_serial_params) { { :user_id => user.id, :address_id => address.id,
-    :icp_id => icp.id } }
+    :icp_id => icp.id, :id => register_serial.id } }
 
     describe "#index" do
       let(:show_all_register_serials) { get :index, :params => { :user_id => user.id,
@@ -65,20 +64,16 @@ RSpec.describe Admin::RegisterSerialsController, type: :controller do
         end
   end
 
-  describe "#show" do
-    let(:show_register_serial) { get :show, :params => register_serial_params }
-    let(:register_serial_params) { { :user_id => user.id, :address_id => address.id,
-    :icp_id => icp.id, :id => register_serial.id } }
+    describe "#show" do
+      let(:show_register_serial) { get :show, :params => register_serial_params }
 
     it "will display the specified register serial" do
       expect(show_register_serial).to render_template(:show)
     end
   end
 
-  describe "#destroy" do
-    let(:delete_register_serial) { delete :destroy, :params => register_serial_params }
-    let(:register_serial_params) { { :user_id => user.id, :address_id => address.id,
-    :icp_id => icp.id, :id => register_serial.id } }
+    describe "#destroy" do
+      let(:delete_register_serial) { delete :destroy, :params => register_serial_params }
 
     it "will delete the register serials linked to the property" do
       expect{delete_register_serial}.to change{RegisterSerial.count}.by(-1)
