@@ -38,14 +38,13 @@ RSpec.describe AddressesController, type: :controller do
   describe "#create" do
     let(:create_address) { post :create, :params => address_params }
     let(:address_params) { { :address => { :address1 => address1, :address2 => address2, :city => city,
-      :district => district, :suburb => suburb, :post_code => post_code, :icp_number => icp_number }, :user_id => user.to_param } }
+      :district => district, :suburb => suburb, :post_code => post_code }, :user_id => user.to_param } }
     let(:address1) { "19A mahoe st" }
     let(:address2) { "" }
     let(:city) { "Wellington" }
     let(:district) { "Porirua" }
     let(:suburb) { "Tawa" }
     let(:post_code) { "1111" }
-    let(:icp_number) { "12sdnkli54" }
 
     context "with valid attributes" do
 
