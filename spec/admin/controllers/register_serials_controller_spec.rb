@@ -22,6 +22,10 @@ RSpec.describe Admin::RegisterSerialsController, type: :controller do
     let(:register_serial_params) { { :user_id => user.id, :address_id => address.id,
     :icp_id => icp.id } }
 
+    describe "#index" do
+      let(:show_all_register_serials) { get :index, :params => { :user_id => user.id,
+      :address_id => address.id,
+      :icp_id => icp.id  } }
     it "will display all the register serials of the user's property" do
       expect(show_all_register_serials).to render_template(:index)
     end
