@@ -32,7 +32,12 @@ RSpec.describe Admin::RegisterSerialsController, type: :controller do
   end
 
   describe "#edit" do
+      let(:edit_register_serial) { get :edit, :params => register_serial_params }
+
+      it "will allow the admin to edit register serial" do
+        expect(edit_register_serial).to render_template(:edit)
   end
+    end
 
   describe "#update" do
   end
