@@ -12,7 +12,7 @@
         <td><%= reg.meter_number %>
         :<%= reg.register_number %>
         [<%= reg.register_decimals %>]</td>
-        <td><%= link_to "Edit", edit_admin_user_address_icp_register_serial_path(@user, @address, @address.icp, reg) , class: "btn btn-primary" %> </td>
+        <td><%= link_to "Update", edit_admin_user_address_icp_register_serial_path(@user, @address, @address.icp, reg) , class: "btn btn-primary" %> </td>
         <td>
           <%= link_to "Delete", admin_user_address_icp_register_serial_path(@user, @address, @address.icp, reg), method: :delete, data: { confirm: "Are you sure?" } , class: "btn btn-primary" %>
         </td>
