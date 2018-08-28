@@ -12,6 +12,21 @@ RSpec.describe Admin::RegisterSerialsController, type: :controller do
   end
 
   describe "#new" do
+    context "when initialized" do
+      let(:new_register_serial) { RegisterSerial.new }
+
+      it "is new register serial" do
+        expect(new_register_serial).to be_a_new(RegisterSerial)
+      end
+    end
+
+     let(:new_register_serial) { get :new,:params => { :user_id => user.id,
+      :address_id => address.id,
+      :icp_id => icp.id  } }
+
+    it "will render new template to create register serial" do
+      expect(new_register_serial).to render_template(:new)
+    end
   end
 
   describe "#create" do
