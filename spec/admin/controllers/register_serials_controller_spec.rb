@@ -40,6 +40,29 @@ RSpec.describe Admin::RegisterSerialsController, type: :controller do
     end
 
   describe "#update" do
+      let(:update_register_serial) { patch :update, :params => updated_params }
+
+      context "with updated attributes" do
+        let(:updated_params) { {
+          :user_id => user.id,
+          :address_id => address.id,
+          :icp_id => icp.id,
+          :id => register_serial.id,
+          :register_serial => {
+            :meter_number => "555",
+            :register_number => "78",
+            :register_decimals => "8"
+          }
+        } }
+
+          it "will flash a successfull message" do
+            expect(update_register_serial.request.flash[:success]).to_not be_nil
+          end
+
+          it "redirects to index page with updated record" do
+            expect(update_register_serial).to redirect_to admin_user_address_icp_register_serials_path(user, address, address.icp)
+          end
+        end
   end
 
   describe "#show" do
