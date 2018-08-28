@@ -34,6 +34,13 @@ RSpec.describe Admin::RegisterSerialsController, type: :controller do
   end
 
   describe "#show" do
+    let(:show_register_serial) { get :show, :params => register_serial_params }
+    let(:register_serial_params) { { :user_id => user.id, :address_id => address.id,
+    :icp_id => icp.id, :id => register_serial.id } }
+
+    it "will display the specified register serial" do
+      expect(show_register_serial).to render_template(:show)
+    end
   end
 
   describe "#destroy" do
